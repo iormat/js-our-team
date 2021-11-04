@@ -17,8 +17,62 @@ Ogni membro dovrà avere le informazioni necessarie per stampare la relativa car
 */
 
 // 1.
-const cardArray = [];
+const cardArray = [
+    {
+        "name" : "Wayne Barnett",
+        "role" : "Founder - CEO",
+        "image" : "img/wayne-barnett-founder-ceo.jpg",
+    },
 
+    {
+        "name" : "Angela Caroll",
+        "role" : "Chief Editor",
+        "image" : "img/angela-caroll-chief-editor.jpg",
+    },
+    
+    {
+        "name" : "Angela Lopez",
+        "role" : "Social Media Manager",
+        "image" : "img/angela-lopez-social-media-manager.jpg",
+    },
+
+    {
+        "name" : "Walter Gordon",
+        "role" : "Office Manager",
+        "image" : "img/walter-gordon-office-manager.jpg",
+    },
+    
+    {
+        "name" : "Barbara Ramos",
+        "role" : "graphic Designer",
+        "image" : "img/barbara-ramos-graphic-designer.jpg",
+    },
+    
+    {
+        "name" : "Scott Estrada",
+        "role" : "Developer",
+        "image" : "img/scott-estrada-developer.jpg",
+    }
+];
+
+// print pre-existing team members
+for (let i = 0; i < cardArray.length; i++) {
+    document.querySelector('.team-container').innerHTML += `
+    <div class="team-card">
+        <div class="card-image">
+            <img
+                src="${cardArray[i].image}"
+                alt="${cardArray[i].name}"
+            />
+        </div>
+        <div class="card-text">
+            <h3>${cardArray[i].name}</h3>
+            <p>${cardArray[i].role}</p>
+        </div>
+    </div>`;
+}
+
+// on click  to add new members 
 document.getElementById('addMemberButton').addEventListener('click',
 
     function() {
@@ -52,5 +106,4 @@ document.getElementById('addMemberButton').addEventListener('click',
                 </div>
             </div>`;
     }
-
 );

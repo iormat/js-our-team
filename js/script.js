@@ -11,52 +11,46 @@ Ogni membro dovrà avere le informazioni necessarie per stampare la relativa car
     1.1 variable for name
         1.2 variable for role
             1.3 variable for image
-Ogni membro dovrà avere le informazioni necessarie per stampare la relativa card: Nome, Ruolo e Foto.
-- Prendendo come riferimento il layout di esempio presente nell’html, stampiamo tutte le card del nostro team.
-- Utilizziamo poi gli input presenti nella pagina per permettere all’utente di aggiungere nuovi membri del team.
+2. create an object containing new info
+    2.1 save newCard in array
+3. creaate a function to print newCard
 */
 
 // 1.
-const cardArr = [
-    {
-        "name" : "Wayne Barnett",
-        "role" : "Founder & CEO",
-        "image" : "img/wayne-barnett-founder-ceo.jpg"
-    },
+const cardArray = [];
 
-    {
-        "name" : "Wayne Barnett",
-        "role" : "Founder & CEO",
-        "image" : "img/wayne-barnett-founder-ceo.jpg"
-    },
-    
-    {
-        "name" : "Wayne Barnett",
-        "role" : "Founder & CEO",
-        "image" : "img/wayne-barnett-founder-ceo.jpg"
-    },
+document.getElementById('addMemberButton').addEventListener('click',
 
+    function() {
+        // 1.1, 1.2. 1.3
+        const teamName = document.getElementById('name').value;
+        const teamRole = document.getElementById('role').value;
+        const teamImage = document.getElementById('image').value;
+        // 2.
+        const newCard = {
+            "name" : teamName,
+            "role" : teamRole,
+            "image" : teamImage,
+        }
+        // 2.1
+        cardArray.push(newCard);
+        console.log(cardArray)
+        console.log(newCard.name, newCard.role, newCard.image)
 
-];
-let allMembers = document.getElementsByClassName('team-container');
+        // 3.
+        document.querySelector('.team-container').innerHTML += `
+            <div class="team-card">
+                <div class="card-image">
+                    <img
+                        src="${newCard.image}"
+                        alt="${newCard.name}"
+                    />
+                </div>
+                <div class="card-text">
+                    <h3>${newCard.name}</h3>
+                    <p>${newCard.role}</p>
+                </div>
+            </div>`;
+    }
 
-const memberName = document.getElementById('name').value;
-const memberRole = document.getElementById('role').value;
-const memberImage = document.getElementById('image').value;
-
-const card = {
-    "name" : memberName,
-    "role" : memberRole,
-    "image" : memberImage
-};
-
-card.name = memberName;
-card.role = memberRole;
-card.image = memberImage;
-
-console.log(card.name, card.role, card.image)
-cardArr.push(card);
-
-
-// print results based on objects in array
-document.getElementsByClassName()
+);

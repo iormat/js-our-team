@@ -44,7 +44,7 @@ const cardArray = [
     
     {
         "name" : "Barbara Ramos",
-        "role" : "graphic Designer",
+        "role" : "Graphic Designer",
         "image" : "img/barbara-ramos-graphic-designer.jpg",
     },
     
@@ -57,19 +57,7 @@ const cardArray = [
 
 // print pre-existing team members
 for (let i = 0; i < cardArray.length; i++) {
-    document.querySelector('.team-container').innerHTML += `
-    <div class="team-card">
-        <div class="card-image">
-            <img
-                src="${cardArray[i].image}"
-                alt="${cardArray[i].name}"
-            />
-        </div>
-        <div class="card-text">
-            <h3>${cardArray[i].name}</h3>
-            <p>${cardArray[i].role}</p>
-        </div>
-    </div>`;
+    printTeamMember(cardArray[i]);
 }
 
 // on click  to add new members 
@@ -90,20 +78,24 @@ document.getElementById('addMemberButton').addEventListener('click',
         cardArray.push(newCard);
         console.log(cardArray)
         console.log(newCard.name, newCard.role, newCard.image)
-
         // 3.
-        document.querySelector('.team-container').innerHTML += `
-            <div class="team-card">
-                <div class="card-image">
-                    <img
-                        src="${newCard.image}"
-                        alt="${newCard.name}"
-                    />
-                </div>
-                <div class="card-text">
-                    <h3>${newCard.name}</h3>
-                    <p>${newCard.role}</p>
-                </div>
-            </div>`;
+        printTeamMember(newCard);
     }
 );
+
+// 3. function to print member (old and new)
+function printTeamMember(TakeKey) {
+    document.querySelector('.team-container').innerHTML += `
+    <div class="team-card">
+        <div class="card-image">
+            <img
+                src="${TakeKey.image}"
+                alt="${TakeKey.name}"
+            />
+        </div>
+        <div class="card-text">
+            <h3>${TakeKey.name}</h3>
+            <p>${TakeKey.role}</p>
+        </div>
+    </div>`;
+}
